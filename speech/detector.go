@@ -63,8 +63,8 @@ func (c DetectorConfig) IsValid() error {
 		return fmt.Errorf("invalid ModelPath: should not be empty")
 	}
 
-	if c.SampleRate != 8000 && c.SampleRate != 16000 {
-		return fmt.Errorf("invalid SampleRate: valid values are 8000 and 16000")
+	if c.SampleRate != 8000 && c.SampleRate % 16000 != 0 {
+		return fmt.Errorf("invalid SampleRate: valid values are 8000 and or multiples of 16000")
 	}
 
 	if c.Threshold <= 0 || c.Threshold >= 1 {
